@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sneha Singh - Java Developer Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-50 font-sans">
     <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-6">
@@ -15,74 +16,120 @@
         </div>
     </header>
 
-    <nav class="bg-white shadow sticky top-0">
-        <div class="container mx-auto px-4 flex justify-around py-3">
-            <a href="#about" class="text-gray-700 hover:text-blue-500">About</a>
-            <a href="#skills" class="text-gray-700 hover:text-blue-500">Skills</a>
-            <a href="#projects" class="text-gray-700 hover:text-blue-500">Projects</a>
-            <a href="#experience" class="text-gray-700 hover:text-blue-500">Experience</a>
-            <a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a>
-        </div>
-    </nav>
-
     <main class="container mx-auto px-4 py-8">
         <!-- About Section -->
         <section id="about" class="mb-12">
             <h2 class="text-3xl font-bold text-center mb-6">About Me</h2>
-            <p class="text-lg text-gray-600 text-center">I am a dedicated Java Developer with over 3 years of experience in building secure web applications and backend services. Passionate about coding, problem-solving, and leveraging the latest technologies to deliver efficient solutions.</p>
+            <p class="text-lg text-gray-600">I am a dedicated Java Developer with over 3 years of experience in building secure web applications and backend services. Passionate about coding, problem-solving, and leveraging the latest technologies to deliver efficient solutions.</p>
         </section>
 
         <!-- Skills Section -->
         <section id="skills" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Java 8</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Spring Boot</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Hibernate</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">MySQL</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">HTML</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">CSS</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">REST API</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Microservices</p>
-                </div>
+            <h2 class="text-3xl font-bold mb-6">Skills</h2>
+            <div class="w-full">
+                <canvas id="skillsBarChart" style="margin: auto; display: block;"></canvas>
             </div>
+            <script>
+                const barCtx = document.getElementById('skillsBarChart').getContext('2d');
+                const skillsBarChart = new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Java 8', 'Spring Boot', 'Hibernate', 'MySQL', 'HTML', 'CSS', 'REST API', 'Microservices'],
+                        datasets: [{
+                            label: 'Skills',
+                            data: [1, 1, 1, 1, 1, 1, 1, 1],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.6)',
+                                'rgba(54, 162, 235, 0.6)',
+                                'rgba(255, 206, 86, 0.6)',
+                                'rgba(231, 74, 59, 0.6)',
+                                'rgba(153, 102, 255, 0.6)',
+                                'rgba(255, 159, 64, 0.6)',
+                                'rgba(75, 192, 192, 0.6)',
+                                'rgba(54, 162, 235, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(231, 74, 59, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Skills'
+                                }
+                            },
+                            y: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            </script>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Projects</h2>
+            <h2 class="text-3xl font-bold mb-6">Projects</h2>
             <div class="space-y-6">
                 <div class="bg-white p-6 shadow rounded">
                     <h3 class="text-xl font-bold">National Electronic Funds Transfer</h3>
                     <p class="text-gray-600">May 2024 - Oct 2024</p>
-                    <p class="mt-2">Designed backend services for fund transfers and implemented secure client-server communication using Java and Spring Boot.</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2">
+                        <li>Designed backend services using Java and Spring Boot to process fund transfers.</li>
+                        <li>Ensured secure client-server communication with Servlets and Spring Security.</li>
+                        <li>Enhanced data management and reporting using MySQL for backend storage.</li>
+                    </ul>
                 </div>
                 <div class="bg-white p-6 shadow rounded">
                     <h3 class="text-xl font-bold">Alert Monitoring & Notification System</h3>
                     <p class="text-gray-600">Nov 2023 - Apr 2024</p>
-                    <p class="mt-2">Developed a tracking and notification system using Spring Boot, with a focus on usability and scalability.</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2">
+                        <li>Developed a tracking and notification system using Spring Boot.</li>
+                        <li>Focused on scalability and usability with a web-based interface.</li>
+                        <li>Managed backend dependencies and data storage using MySQL.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 shadow rounded">
+                    <h3 class="text-xl font-bold">CIBIL-SIRS</h3>
+                    <p class="text-gray-600">May 2023 - Oct 2023</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2">
+                        <li>Built RESTful web services for financial systems integration.</li>
+                        <li>Deployed microservices architecture to enhance scalability and modularity.</li>
+                        <li>Optimized database queries in MySQL for better performance.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 shadow rounded">
+                    <h3 class="text-xl font-bold">Non-Performing Asset</h3>
+                    <p class="text-gray-600">Nov 2022 - Apr 2023</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2">
+                        <li>Implemented backend services for large-scale financial data processing.</li>
+                        <li>Used Hibernate for database interactions and Spring MVC for structure.</li>
+                        <li>Enhanced data security with role-based access controls.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <!-- Experience Section -->
         <section id="experience" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Experience</h2>
+            <h2 class="text-3xl font-bold mb-6">Experience</h2>
             <div class="space-y-6">
                 <div class="bg-white p-6 shadow rounded">
                     <h3 class="text-xl font-bold">Java Developer</h3>
@@ -99,29 +146,7 @@
 
         <!-- Contact Section -->
         <section id="contact" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Contact Me</h2>
-            <form class="max-w-lg mx-auto bg-white p-6 shadow rounded">
-                <div class="mb-4">
-                    <label for="name" class="block text-gray-700 font-bold">Name</label>
-                    <input type="text" id="name" class="w-full p-2 border rounded">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 font-bold">Email</label>
-                    <input type="email" id="email" class="w-full p-2 border rounded">
-                </div>
-                <div class="mb-4">
-                    <label for="message" class="block text-gray-700 font-bold">Message</label>
-                    <textarea id="message" rows="4" class="w-full p-2 border rounded"></textarea>
-                </div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Send</button>
-            </form>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2025 Sneha Singh. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
+            <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
+            <div class="text-gray-600">
+                <p>Email: <a href="mailto:singhsneha012000@gmail.com" class="text-blue-500 hover:underline">singhsneha012000@gmail.com</a></p>
+                <p>Phone: <a href="tel:+919004016846" class="text-blue-500 hover:underline">+91 8422931982</
