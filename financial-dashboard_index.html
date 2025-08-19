@@ -1,0 +1,184 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a202c;
+            background: #f7fafc;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: none;
+        }
+        h1, h2 {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        .chart-container {
+            max-width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-r from-indigo-900 to-blue-600 p-4">
+    <div class="bg-white shadow-lg rounded-xl p-8 max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold text-indigo-900 mb-6 text-center"><i class="fas fa-chart-line mr-2"></i>Financial Dashboard</h1>
+        <p class="text-gray-700 mb-6 text-center">Visualize financial metrics and manage user accounts.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-100 p-6 rounded-lg">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4"><i class="fas fa-wallet mr-2"></i>Account Balance</h2>
+                <p id="balance" class="text-3xl text-indigo-600 font-bold">$12,345.67</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4"><i class="fas fa-exchange-alt mr-2"></i>Recent Transactions</h2>
+                <ul id="transactions" class="text-gray-700 space-y-2">
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Deposit: $750.00 - 2025-08-18</li>
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Transfer: $300.00 - 2025-08-17</li>
+                </ul>
+                <button id="toggle-transactions" class="mt-4 text-indigo-600 hover:text-indigo-800 text-sm"><i class="fas fa-chevron-down mr-1"></i>Show More</button>
+            </div>
+        </div>
+        <div class="mt-8">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4"><i class="fas fa-chart-bar mr-2"></i>Balance Trend</h2>
+            <div class="chart-container">
+                <canvas id="balanceChart"></canvas>
+            </div>
+        </div>
+        <button id="refresh-data" class="mt-8 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors"><i class="fas fa-sync-alt mr-2"></i>Refresh Data</button>
+        <div id="status" class="mt-4 text-center text-gray-700"></div>
+    </div>
+    <script>
+        // Chart.js initialization
+        const ctx = document.getElementById('balanceChart').getContext('2d');
+        const balanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2025-08-01', '2025-08-05', '2025-08-10', '2025-08-15', '2025-08-18'],
+                datasets: [{
+                    label: 'Account Balance ($)',
+                    data: [10000, 10500, 11000, 11500, 12345.67],
+                    borderColor: '#4c51bf',
+                    backgroundColor: 'rgba(76, 81, 191, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: false },
+                    x: { title: { display: true, text: 'Date' } }
+                }
+            }
+        });
+
+        // Toggle transaction history
+        const toggleBtn = document.getElementById('toggle-transactions');
+        const transactionsList = document.getElementById('transactions');
+        let isExpanded = false;
+        toggleBtn.addEventListener('click', () => {
+            if (isExpanded) {
+                transactionsList.innerHTML = `
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Deposit: $750.00 - 2025-08-18</li>
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Transfer: $300.00 - 2025-08-17</li>
+                `;
+                toggleBtn.innerHTML = '<i class="fas fa-chevron-down mr-1"></i>Show More';
+            } else {
+                transactionsList.innerHTML = `
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Deposit: $750.00 - 2025-08-18</li>
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Transfer: $300.00 - 2025-08-17</li>
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Withdrawal: $500.00 - 2025-08-16</li>
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Deposit: $1,200.00 - 2025-08-15</li>
+                `;
+                toggleBtn.innerHTML = '<i class="fas fa-chevron-up mr-1"></i>Show Less';
+            }
+            isExpanded = !isExpanded;
+        });
+
+        // Refresh data
+        document.getElementById('refresh-data').addEventListener('click', () => {
+            const status = document.getElementById('status');
+            status.textContent = 'Refreshing data...';
+            // Placeholder for API call to Spring Boot backend
+            /*
+            fetch('/api/dashboard/data', {
+                method: 'GET',
+                headers: { 'Authorization': 'Bearer <JWT>' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('balance').textContent = `$${data.balance.toFixed(2)}`;
+                document.getElementById('transactions').innerHTML = data.transactions.map(t => `<li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>${t.type}: $${t.amount} - ${t.date}</li>`).join('');
+                balanceChart.data.labels = data.chartData.labels;
+                balanceChart.data.datasets[0].data = data.chartData.values;
+                balanceChart.update();
+                status.textContent = 'Data refreshed successfully!';
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                status.textContent = 'Error refreshing data';
+            });
+            */
+            setTimeout(() => {
+                document.getElementById('balance').textContent = '$14,567.89';
+                transactionsList.innerHTML = `
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Deposit: $1,000.00 - 2025-08-19</li>
+                    <li><i class="fas fa-circle text-xs text-yellow-500 mr-2"></i>Transfer: $400.00 - 2025-08-18</li>
+                `;
+                balanceChart.data.labels = ['2025-08-02', '2025-08-07', '2025-08-12', '2025-08-17', '2025-08-19'];
+                balanceChart.data.datasets[0].data = [11000, 11500, 12000, 13000, 14567.89];
+                balanceChart.update();
+                status.textContent = 'Data refreshed successfully!';
+                isExpanded = false;
+                toggleBtn.innerHTML = '<i class="fas fa-chevron-down mr-1"></i>Show More';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
