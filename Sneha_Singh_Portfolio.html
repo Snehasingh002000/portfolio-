@@ -1,128 +1,295 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sneha Singh - Java Developer Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sneha Singh - Portfolio Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #003366;
+            color: white;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        .header .contact-info a, .header .contact-info span {
+            color: white;
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            color: #003366;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .section-title i {
+            margin-right: 8px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .experience-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .experience-item img {
+            width: 40px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .experience-item strong {
+            font-weight: bold;
+        }
+        .skill-chart {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .skill-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+        .skill-circle svg {
+            transform: rotate(-90deg);
+        }
+        .skill-circle .circle-bg {
+            fill: none;
+            stroke: #d1d5db;
+            stroke-width: 10;
+        }
+        .skill-circle .circle-fg {
+            fill: none;
+            stroke: #0066cc;
+            stroke-width: 10;
+            stroke-dasharray: 565;
+            stroke-dashoffset: 0;
+        }
+        .skill-circle .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 0.7rem;
+            color: #333;
+        }
+        .skill-circle .skill-label {
+            position: absolute;
+            font-size: 0.7rem;
+            text-align: center;
+            width: 80px;
+        }
+        .skill-label:nth-child(2) { top: -20px; left: 50%; transform: translateX(-50%); }
+        .skill-label:nth-child(3) { top: 10px; left: 90%; transform: translateY(-50%) rotate(45deg); }
+        .skill-label:nth-child(4) { top: 50%; right: -20px; transform: translateY(-50%); }
+        .skill-label:nth-child(5) { bottom: 10px; right: 10px; transform: translateY(-50%) rotate(-45deg); }
+        .skill-label:nth-child(6) { bottom: -20px; left: 50%; transform: translateX(-50%); }
+        .skill-label:nth-child(7) { bottom: 10px; left: 10px; transform: translateY(-50%) rotate(45deg); }
+        .skill-label:nth-child(8) { top: 50%; left: -20px; transform: translateY(-50%); }
+        .skill-label:nth-child(9) { top: 10px; left: 10px; transform: translateY(-50%) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-6">
-        <div class="container mx-auto px-4 text-center">
-            <img src="https://via.placeholder.com/150" alt="Sneha Singh" class="mx-auto rounded-full border-4 border-white">
-            <h1 class="text-4xl font-bold mt-4">Sneha Singh</h1>
-            <p class="text-lg">Java Developer | 3+ Years Experience | Building Secure Web Apps</p>
+<body>
+    <div class="header">
+        <h1>Sneha Singh</h1>
+        <div class="contact-info">
+            <span><i class="fas fa-envelope"></i> <a href="mailto:snehasingh05749@gmail.com">snehasingh05749@gmail.com</a></span>
+            <span><i class="fas fa-phone"></i> 7304624203</span>
+            <span><i class="fas fa-map-marker-alt"></i> Asalpha, Ghatkopar, Mumbai</span>
+            <span><i class="fab fa-github"></i> <a href="https://snehasingh242.github.io/portfolio-/" target="_blank">Portfolio</a></span>
         </div>
-    </header>
+    </div>
+    <div class="container">
+        <div>
+            <h2 class="section-title"><i class="fas fa-user"></i> Professional Summary</h2>
+            <ul>
+                <li>4 years hands-on experience in enterprise banking applications.</li>
+                <li>Expertise in Java 8, Spring Boot, Hibernate, Spring MVC, Security, REST APIs, MySQL.</li>
+                <li>Full-stack: Backend services and responsive front-end (HTML, CSS).</li>
+                <li>Proficient in Exception Handling, Collections, Database optimization.</li>
+                <li>Skilled in debugging, performance tuning, secure authentication mechanisms.</li>
+                <li>Committed to continuous learning and industry best practices.</li>
+            </ul>
 
-    <nav class="bg-white shadow sticky top-0">
-        <div class="container mx-auto px-4 flex justify-around py-3">
-            <a href="#about" class="text-gray-700 hover:text-blue-500">About</a>
-            <a href="#skills" class="text-gray-700 hover:text-blue-500">Skills</a>
-            <a href="#projects" class="text-gray-700 hover:text-blue-500">Projects</a>
-            <a href="#experience" class="text-gray-700 hover:text-blue-500">Experience</a>
-            <a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a>
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <div class="experience-item">
+                <span><img src="ebixcash_logo.png" alt="EbixCash Logo"> <strong>EbixCash</strong></span>
+                <span>Java Developer, Dec 2024 – Present</span>
+            </div>
+            <ul>
+                <li>Developed secure financial applications, collaborated for scalable, high-availability solutions.</li>
+            </ul>
+            <div class="experience-item">
+                <span><img src="kotak_mahindra_logo.png" alt="Kotak Mahindra Bank Logo"> <strong>Kotak Mahindra Bank</strong></span>
+                <span>Java Developer, Oct 2022 – Dec 2024</span>
+            </div>
+            <ul>
+                <li>Built secure, scalable mission-critical banking applications, RESTful services.</li>
+                <li>Enhanced user interfaces with HTML, CSS for responsive front-end design.</li>
+            </ul>
+            <div class="experience-item">
+                <span><img src="sun_chem_logo.png" alt="Sun Chem India Logo"> <strong>Sun Chem India</strong></span>
+                <span>Java Developer Intern, Aug 2021 – Oct 2022</span>
+            </div>
+            <ul>
+                <li>Assisted in Java application development, debugging, testing, optimization.</li>
+            </ul>
+
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
+            <ul>
+                <li><strong>Payment Processing System</strong> (May–Aug 2025): Enabled secure, real-time transaction processing for banking clients.</li>
+                <li><strong>Financial Dashboard</strong> (Dec 2024–Apr 2025): Provided data visualization for financial metrics and user management.</li>
+                <li><strong>NEFT System</strong> (May–Oct 2024): Facilitated secure electronic fund transfers with encrypted communication.</li>
+                <li><strong>Alert Monitoring</strong> (Nov 2023–Apr 2024): Delivered real-time event detection and notification for banking operations.</li>
+                <li><strong>CIBIL SIRS</strong> (May–Oct 2023): Supported credit score reporting with optimized data retrieval.</li>
+                <li><strong>NPA System</strong> (Nov 2022–Apr 2023): Managed non-performing assets with secure data processing.</li>
+            </ul>
+            <strong>Roles and Responsibilities:</strong>
+            <ul>
+                <li>Designed and developed secure backend services using Java 8, Spring Boot, and Hibernate with JWT authentication.</li>
+                <li>Built responsive front-end interfaces using HTML and CSS for user-friendly applications.</li>
+                <li>Optimized MySQL database queries for high-performance data processing and scalability.</li>
+                <li>Implemented microservices architecture to enhance system modularity and maintainability.</li>
+                <li>Configured real-time monitoring and notification systems for efficient event handling.</li>
+                <li>Collaborated with teams to ensure secure, scalable, and high-availability solutions.</li>
+            </ul>
+
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <ul>
+                <li><strong>M.Sc IT – S.P.D.T College</strong> (2021–2023): 82%</li>
+                <li><strong>B.Sc IT – S.P.D.T College</strong> (2017–2020): 84%</li>
+                <li><strong>HSC – Terna Eng College</strong> (2015–2017): 57%</li>
+                <li><strong>SSC – H.B.V.M School</strong> (2014–2015): 65%</li>
+            </ul>
         </div>
-    </nav>
+        <div>
+            <h2 class="section-title"><i class="fas fa-flag"></i> Career Objective</h2>
+            <p>Passionate Java Developer with 4 years of experience in the banking and financial domain, specializing in secure, scalable, high-performance technology solutions.</p>
 
-    <main class="container mx-auto px-4 py-8">
-        <!-- About Section -->
-        <section id="about" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">About Me</h2>
-            <p class="text-lg text-gray-600 text-center">I am a dedicated Java Developer with over 3 years of experience in building secure web applications and backend services. Passionate about coding, problem-solving, and leveraging the latest technologies to deliver efficient solutions.</p>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Java 8</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Spring Boot</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Hibernate</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">MySQL</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">HTML</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">CSS</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">REST API</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded text-center">
-                    <p class="text-lg font-semibold">Microservices</p>
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Technical Skills</h2>
+            <div class="skill-chart">
+                <div class="skill-circle">
+                    <svg width="150" height="150">
+                        <circle class="circle-bg" cx="75" cy="75" r="70"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70" transform="rotate(45, 75, 75)"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70" transform="rotate(90, 75, 75)"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70" transform="rotate(135, 75, 75)"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70" transform="rotate(180, 75, 75)"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70" transform="rotate(225, 75, 75)"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70" transform="rotate(270, 75, 75)"/>
+                        <circle class="circle-fg" cx="75" cy="75" r="70" transform="rotate(315, 75, 75)"/>
+                    </svg>
+                    <div class="label">Key Technical Skills</div>
+                    <div class="skill-label"><i class="fas fa-code"></i> Java 8</div>
+                    <div class="skill-label"><i class="fas fa-cogs"></i> Spring Boot</div>
+                    <div class="skill-label"><i class="fas fa-database"></i> Hibernate</div>
+                    <div class="skill-label"><i class="fas fa-shield-alt"></i> Spring Security</div>
+                    <div class="skill-label"><i class="fas fa-database"></i> MySQL</div>
+                    <div class="skill-label"><i class="fab fa-html5"></i> HTML/CSS</div>
+                    <div class="skill-label"><i class="fab fa-docker"></i> Docker</div>
+                    <div class="skill-label"><i class="fas fa-cloud"></i> AWS</div>
                 </div>
             </div>
-        </section>
+            <ul>
+                <li><strong>Languages:</strong>
+                    <ul>
+                        <li><i class="fas fa-code"></i> Java 8</li>
+                        <li><i class="fas fa-code"></i> Core Java</li>
+                        <li><i class="fas fa-bug"></i> Java Errors</li>
+                        <li><i class="fas fa-cube"></i> Data Structures</li>
+                        <li><i class="fas fa-list"></i> Collections</li>
+                        <li><i class="fas fa-cloud-upload-alt"></i> REST API</li>
+                        <li><i class="fab fa-html5"></i> HTML</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS</li>
+                    </ul>
+                </li>
+                <li><strong>Frameworks:</strong>
+                    <ul>
+                        <li><i class="fas fa-cogs"></i> Spring Boot</li>
+                        <li><i class="fas fa-cogs"></i> Spring MVC</li>
+                        <li><i class="fas fa-cogs"></i> Spring Data JPA</li>
+                        <li><i class="fas fa-cogs"></i> Hibernate</li>
+                        <li><i class="fas fa-shield-alt"></i> Spring Security (JWT)</li>
+                    </ul>
+                </li>
+                <li><strong>Databases:</strong>
+                    <ul>
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                    </ul>
+                </li>
+                <li><strong>Tools:</strong>
+                    <ul>
+                        <li><i class="fas fa-tools"></i> Eclipse</li>
+                        <li><i class="fas fa-tools"></i> IntelliJ</li>
+                        <li><i class="fas fa-tools"></i> STS</li>
+                        <li><i class="fas fa-code"></i> VS Code</li>
+                        <li><i class="fas fa-terminal"></i> Git Bash</li>
+                        <li><i class="fas fa-code-branch"></i> Git</li>
+                        <li><i class="fas fa-tools"></i> Maven</li>
+                        <li><i class="fas fa-ticket-alt"></i> Jira</li>
+                        <li><i class="fas fa-cloud-upload-alt"></i> Postman</li>
+                    </ul>
+                </li>
+                <li><strong>Platforms:</strong>
+                    <ul>
+                        <li><i class="fas fa-server"></i> Apache Tomcat</li>
+                        <li><i class="fas fa-cloud"></i> AWS</li>
+                        <li><i class="fab fa-github"></i> GitHub</li>
+                        <li><i class="fab fa-docker"></i> Docker</li>
+                        <li><i class="fas fa-cogs"></i> Kubernetes</li>
+                    </ul>
+                </li>
+            </ul>
 
-        <!-- Projects Section -->
-        <section id="projects" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Projects</h2>
-            <div class="space-y-6">
-                <div class="bg-white p-6 shadow rounded">
-                    <h3 class="text-xl font-bold">National Electronic Funds Transfer</h3>
-                    <p class="text-gray-600">May 2024 - Oct 2024</p>
-                    <p class="mt-2">Designed backend services for fund transfers and implemented secure client-server communication using Java and Spring Boot.</p>
-                </div>
-                <div class="bg-white p-6 shadow rounded">
-                    <h3 class="text-xl font-bold">Alert Monitoring & Notification System</h3>
-                    <p class="text-gray-600">Nov 2023 - Apr 2024</p>
-                    <p class="mt-2">Developed a tracking and notification system using Spring Boot, with a focus on usability and scalability.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Experience</h2>
-            <div class="space-y-6">
-                <div class="bg-white p-6 shadow rounded">
-                    <h3 class="text-xl font-bold">Java Developer</h3>
-                    <p class="text-gray-600">Jalgi Technologies Pvt Ltd | Oct 2022 - Dec 2024</p>
-                    <p class="mt-2">Developed and maintained Java-based banking applications remotely.</p>
-                </div>
-                <div class="bg-white p-6 shadow rounded">
-                    <h3 class="text-xl font-bold">Java Developer Intern</h3>
-                    <p class="text-gray-600">Sun Chem (India) | Aug 2021 - Oct 2022</p>
-                    <p class="mt-2">Contributed to secure application design and Java-based projects.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-6">Contact Me</h2>
-            <form class="max-w-lg mx-auto bg-white p-6 shadow rounded">
-                <div class="mb-4">
-                    <label for="name" class="block text-gray-700 font-bold">Name</label>
-                    <input type="text" id="name" class="w-full p-2 border rounded">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 font-bold">Email</label>
-                    <input type="email" id="email" class="w-full p-2 border rounded">
-                </div>
-                <div class="mb-4">
-                    <label for="message" class="block text-gray-700 font-bold">Message</label>
-                    <textarea id="message" rows="4" class="w-full p-2 border rounded"></textarea>
-                </div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Send</button>
-            </form>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2025 Sneha Singh. All rights reserved.</p>
+            <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
+            <ul>
+                <li>Java Full Stack Developer Course – IBM</li>
+                <li>AI Tools – ChatGPT</li>
+                <li>MSCIT – Government Certified</li>
+                <li>Member – Drishya Talent Assemble</li>
+            </ul>
         </div>
-    </footer>
+    </div>
 </body>
 </html>
