@@ -5,226 +5,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sneha Singh - Portfolio Resume</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         body {
             font-family: 'Noto Sans', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f4f4f4;
+            color: #1a202c;
+            background-color: #f7fafc;
             word-wrap: break-word;
             overflow-wrap: break-word;
             hyphens: none;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #003366;
-            color: white;
-        }
-        .header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-        }
-        .header .contact-info a, .header .contact-info span {
-            color: white;
-            margin: 0 10px;
-            font-size: 0.9rem;
-        }
         .section-title {
-            font-size: 1.5rem;
-            color: #003366;
-            border-bottom: 2px solid #003366;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
+            transition: transform 0.2s ease-in-out;
         }
-        .section-title i {
+        .section-title:hover {
+            transform: scale(1.05);
+        }
+        .icon-fallback {
+            display: inline-flex;
+            align-items: center;
             margin-right: 8px;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .icon-fallback i {
+            margin-right: 4px;
         }
-        ul li {
-            margin-bottom: 5px;
-            font-size: 0.9rem;
+        .icon-fallback .fallback-text {
+            display: none;
+            font-size: 0.8rem;
         }
-        .experience-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .experience-item strong {
-            font-weight: bold;
-        }
-        a.project-link {
-            color: #0066cc;
-            text-decoration: underline;
-        }
-        a.project-link:hover {
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+        .icon-fallback i:not(.fa):not(.fas):not(.fab) + .fallback-text {
+            display: inline;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Sneha Singh</h1>
-        <div class="contact-info">
-            <span><i class="fas fa-envelope"></i> <a href="mailto:snehasingh05749@gmail.com">snehasingh05749@gmail.com</a></span>
-            <span><i class="fas fa-phone"></i> 7304624203</span>
-            <span><i class="fas fa-map-marker-alt"></i> Asalpha, Ghatkopar, Mumbai</span>
-            <span><i class="fab fa-github"></i> <a href="https://snehasingh242.github.io/portfolio-/" target="_blank">Portfolio</a></span>
+    <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white text-center py-8">
+        <h1 class="text-4xl font-bold">Sneha Singh</h1>
+        <div class="contact-info mt-4 flex flex-wrap justify-center gap-4 text-sm">
+            <span><i class="fas fa-envelope mr-2"></i><a href="mailto:snehasingh05749@gmail.com" class="hover:text-blue-300">snehasingh05749@gmail.com</a></span>
+            <span><i class="fas fa-phone mr-2"></i>7304624203</span>
+            <span><i class="fas fa-map-marker-alt mr-2"></i>Asalpha, Ghatkopar, Mumbai</span>
+            <span><i class="fab fa-github mr-2"></i><a href="https://snehasingh242.github.io/portfolio-/" target="_blank" class="hover:text-blue-300">Portfolio</a></span>
         </div>
-    </div>
-    <div class="container">
-        <div>
-            <h2 class="section-title"><i class="fas fa-user"></i> Professional Summary</h2>
-            <ul>
-                <li>4 years hands-on experience in enterprise banking applications.</li>
-                <li>Expertise in Java 8, Spring Boot, Hibernate, Spring MVC, Security, REST APIs, MySQL.</li>
-                <li>Full-stack: Backend services and responsive front-end (HTML, CSS).</li>
-                <li>Proficient in Exception Handling, Collections, Database optimization.</li>
-                <li>Skilled in debugging, performance tuning, secure authentication mechanisms.</li>
-                <li>Committed to continuous learning and industry best practices.</li>
-            </ul>
+    </header>
+    <div class="container max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 space-y-6">
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-user mr-2"></i>Professional Summary</h2>
+                <ul class="list-none space-y-2 text-gray-700">
+                    <li>4 years hands-on experience in enterprise banking applications.</li>
+                    <li>Expertise in Java 8, Spring Boot, Hibernate, Spring MVC, Security, REST APIs, MySQL.</li>
+                    <li>Full-stack: Backend services and responsive front-end (HTML, CSS).</li>
+                    <li>Proficient in Exception Handling, Collections, Database optimization.</li>
+                    <li>Skilled in debugging, performance tuning, secure authentication mechanisms.</li>
+                    <li>Committed to continuous learning and industry best practices.</li>
+                </ul>
+            </section>
 
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-            <div class="experience-item">
-                <span><strong>EbixCash</strong></span>
-                <span>Java Developer, Dec 2024 – Present</span>
-            </div>
-            <ul>
-                <li>Developed secure financial applications, collaborated for scalable, high-availability solutions.</li>
-            </ul>
-            <div class="experience-item">
-                <span><strong>Kotak Mahindra Bank</strong></span>
-                <span>Java Developer, Oct 2022 – Dec 2024</span>
-            </div>
-            <ul>
-                <li>Built secure, scalable mission-critical banking applications, RESTful services.</li>
-                <li>Enhanced user interfaces with HTML, CSS for responsive front-end design.</li>
-            </ul>
-            <div class="experience-item">
-                <span><strong>Sun Chem India</strong></span>
-                <span>Java Developer Intern, Aug 2021 – Oct 2022</span>
-            </div>
-            <ul>
-                <li>Assisted in Java application development, debugging, testing, optimization.</li>
-            </ul>
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-briefcase mr-2"></i>Professional Experience</h2>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-gray-800">EbixCash</span>
+                        <span class="text-gray-600">Java Developer, Dec 2024 – Present</span>
+                    </div>
+                    <ul class="list-none space-y-2 text-gray-700 ml-4">
+                        <li>Developed secure financial applications, collaborated for scalable, high-availability solutions.</li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-gray-800">Kotak Mahindra Bank</span>
+                        <span class="text-gray-600">Java Developer, Oct 2022 – Dec 2024</span>
+                    </div>
+                    <ul class="list-none space-y-2 text-gray-700 ml-4">
+                        <li>Built secure, scalable mission-critical banking applications, RESTful services.</li>
+                        <li>Enhanced user interfaces with HTML, CSS for responsive front-end design.</li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-gray-800">Sun Chem India</span>
+                        <span class="text-gray-600">Java Developer Intern, Aug 2021 – Oct 2022</span>
+                    </div>
+                    <ul class="list-none space-y-2 text-gray-700 ml-4">
+                        <li>Assisted in Java application development, debugging, testing, optimization.</li>
+                    </ul>
+                </div>
+            </section>
 
-            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
-            <ul>
-                <li><strong><a href="https://github.com/snehasingh242/payment-processing-system" target="_blank" class="project-link">Payment Processing System</a></strong> (May–Aug 2025): Enabled secure, real-time transaction processing for banking clients.</li>
-                <li><strong><a href="https://github.com/snehasingh242/financial-dashboard" target="_blank" class="project-link">Financial Dashboard</a></strong> (Dec 2024–Apr 2025): Provided data visualization for financial metrics and user management.</li>
-                <li><strong><a href="https://github.com/snehasingh242/neft-system" target="_blank" class="project-link">NEFT System</a></strong> (May–Oct 2024): Facilitated secure electronic fund transfers with encrypted communication.</li>
-                <li><strong><a href="https://github.com/snehasingh242/alert-monitoring" target="_blank" class="project-link">Alert Monitoring</a></strong> (Nov 2023–Apr 2024): Delivered real-time event detection and notification for banking operations.</li>
-                <li><strong><a href="https://github.com/snehasingh242/cibil-sirs" target="_blank" class="project-link">CIBIL SIRS</a></strong> (May–Oct 2023): Supported credit score reporting with optimized data retrieval.</li>
-                <li><strong><a href="https://github.com/snehasingh242/npa-system" target="_blank" class="project-link">NPA System</a></strong> (Nov 2022–Apr 2023): Managed non-performing assets with secure data processing.</li>
-            </ul>
-            <strong>Roles and Responsibilities:</strong>
-            <ul>
-                <li>Designed and developed secure backend services using Java 8, Spring Boot, and Hibernate with JWT authentication.</li>
-                <li>Built responsive front-end interfaces using HTML and CSS for user-friendly applications.</li>
-                <li>Optimized MySQL database queries for high-performance data processing and scalability.</li>
-                <li>Implemented microservices architecture to enhance system modularity and maintainability.</li>
-                <li>Configured real-time monitoring and notification systems for efficient event handling.</li>
-                <li>Collaborated with teams to ensure secure, scalable, and high-availability solutions.</li>
-            </ul>
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-project-diagram mr-2"></i>Key Projects</h2>
+                <ul class="list-none space-y-2 text-gray-700">
+                    <li><strong><a href="https://github.com/snehasingh242/payment-processing-system" target="_blank" class="text-blue-600 hover:text-blue-500 hover:underline-offset-4">Payment Processing System</a></strong> (May–Aug 2025): Enabled secure, real-time transaction processing for banking clients.</li>
+                    <li><strong><a href="https://github.com/snehasingh242/financial-dashboard" target="_blank" class="text-blue-600 hover:text-blue-500 hover:underline-offset-4">Financial Dashboard</a></strong> (Dec 2024–Apr 2025): Provided data visualization for financial metrics and user management.</li>
+                    <li><strong><a href="https://github.com/snehasingh242/neft-system" target="_blank" class="text-blue-600 hover:text-blue-500 hover:underline-offset-4">NEFT System</a></strong> (May–Oct 2024): Facilitated secure electronic fund transfers with encrypted communication.</li>
+                    <li><strong><a href="https://github.com/snehasingh242/alert-monitoring" target="_blank" class="text-blue-600 hover:text-blue-500 hover:underline-offset-4">Alert Monitoring</a></strong> (Nov 2023–Apr 2024): Delivered real-time event detection and notification for banking operations.</li>
+                    <li><strong><a href="https://github.com/snehasingh242/cibil-sirs" target="_blank" class="text-blue-600 hover:text-blue-500 hover:underline-offset-4">CIBIL SIRS</a></strong> (May–Oct 2023): Supported credit score reporting with optimized data retrieval.</li>
+                    <li><strong><a href="https://github.com/snehasingh242/npa-system" target="_blank" class="text-blue-600 hover:text-blue-500 hover:underline-offset-4">NPA System</a></strong> (Nov 2022–Apr 2023): Managed non-performing assets with secure data processing.</li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">Roles and Responsibilities:</h3>
+                <ul class="list-none space-y-2 text-gray-700 ml-4">
+                    <li>Designed and developed secure backend services using Java 8, Spring Boot, and Hibernate with JWT authentication.</li>
+                    <li>Built responsive front-end interfaces using HTML and CSS for user-friendly applications.</li>
+                    <li>Optimized MySQL database queries for high-performance data processing and scalability.</li>
+                    <li>Implemented microservices architecture to enhance system modularity and maintainability.</li>
+                    <li>Configured real-time monitoring and notification systems for efficient event handling.</li>
+                    <li>Collaborated with teams to ensure secure, scalable, and high-availability solutions.</li>
+                </ul>
+            </section>
 
-            <h2 class="section-title"><i class="fas fa-star"></i> Why Hire Me</h2>
-            <ul>
-                <li>Proven expertise in delivering secure, scalable banking applications with a track record of optimizing performance and enhancing user experience.</li>
-                <li>Full-stack proficiency in Java, Spring Boot, and front-end technologies, ensuring end-to-end development of robust solutions.</li>
-                <li>Dedicated to continuous learning, adopting industry best practices, and driving innovation in mission-critical systems.</li>
-            </ul>
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-star mr-2"></i>Why Hire Me</h2>
+                <ul class="list-none space-y-2 text-gray-700">
+                    <li>Proven expertise in delivering secure, scalable banking applications with a track record of optimizing performance and enhancing user experience.</li>
+                    <li>Full-stack proficiency in Java, Spring Boot, and front-end technologies, ensuring end-to-end development of robust solutions.</li>
+                    <li>Dedicated to continuous learning, adopting industry best practices, and driving innovation in mission-critical systems.</li>
+                </ul>
+            </section>
 
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-            <ul>
-                <li><strong>M.Sc IT – S.P.D.T College</strong> (2021–2023): 82%</li>
-                <li><strong>B.Sc IT – S.P.D.T College</strong> (2017–2020): 84%</li>
-                <li><strong>HSC – Terna Eng College</strong> (2015–2017): 57%</li>
-                <li><strong>SSC – H.B.V.M School</strong> (2014–2015): 65%</li>
-            </ul>
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-graduation-cap mr-2"></i>Education</h2>
+                <ul class="list-none space-y-2 text-gray-700">
+                    <li><strong>M.Sc IT – S.P.D.T College</strong> (2021–2023): 82%</li>
+                    <li><strong>B.Sc IT – S.P.D.T College</strong> (2017–2020): 84%</li>
+                    <li><strong>HSC – Terna Eng College</strong> (2015–2017): 57%</li>
+                    <li><strong>SSC – H.B.V.M School</strong> (2014–2015): 65%</li>
+                </ul>
+            </section>
         </div>
-        <div>
-            <h2 class="section-title"><i class="fas fa-flag"></i> Career Objective</h2>
-            <p>Passionate Java Developer with 4 years of experience in the banking and financial domain, specializing in secure, scalable, high-performance technology solutions.</p>
+        <div class="space-y-6">
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-flag mr-2"></i>Career Objective</h2>
+                <p class="text-gray-700">Passionate Java Developer with 4 years of experience in the banking and financial domain, specializing in secure, scalable, high-performance technology solutions.</p>
+            </section>
 
-            <h2 class="section-title"><i class="fas fa-cogs"></i> Technical Skills</h2>
-            <ul>
-                <li><strong>Languages:</strong>
-                    <ul>
-                        <li><i class="fas fa-code"></i> Java 8</li>
-                        <li><i class="fas fa-code"></i> Core Java</li>
-                        <li><i class="fas fa-bug"></i> Java Errors</li>
-                        <li><i class="fas fa-cube"></i> Data Structures</li>
-                        <li><i class="fas fa-list"></i> Collections</li>
-                        <li><i class="fas fa-cloud-upload-alt"></i> REST API</li>
-                        <li><i class="fas fa-html5"></i> HTML</li>
-                        <li><i class="fas fa-css3-alt"></i> CSS</li>
-                    </ul>
-                </li>
-                <li><strong>Frameworks:</strong>
-                    <ul>
-                        <li><i class="fas fa-cogs"></i> Spring Boot</li>
-                        <li><i class="fas fa-cogs"></i> Spring MVC</li>
-                        <li><i class="fas fa-cogs"></i> Spring Data JPA</li>
-                        <li><i class="fas fa-cogs"></i> Hibernate</li>
-                        <li><i class="fas fa-shield-alt"></i> Spring Security (JWT)</li>
-                    </ul>
-                </li>
-                <li><strong>Databases:</strong>
-                    <ul>
-                        <li><i class="fas fa-database"></i> MySQL</li>
-                    </ul>
-                </li>
-                <li><strong>Tools:</strong>
-                    <ul>
-                        <li><i class="fas fa-tools"></i> Eclipse</li>
-                        <li><i class="fas fa-tools"></i> IntelliJ</li>
-                        <li><i class="fas fa-tools"></i> STS</li>
-                        <li><i class="fas fa-code"></i> VS Code</li>
-                        <li><i class="fas fa-terminal"></i> Git Bash</li>
-                        <li><i class="fas fa-code-branch"></i> Git</li>
-                        <li><i class="fas fa-tools"></i> Maven</li>
-                        <li><i class="fas fa-ticket-alt"></i> Jira</li>
-                        <li><i class="fas fa-cloud-upload-alt"></i> Postman</li>
-                    </ul>
-                </li>
-                <li><strong>Platforms:</strong>
-                    <ul>
-                        <li><i class="fas fa-server"></i> Apache Tomcat</li>
-                        <li><i class="fas fa-cloud"></i> AWS</li>
-                        <li><i class="fas fa-github"></i> GitHub</li>
-                        <li><i class="fas fa-docker"></i> Docker</li>
-                        <li><i class="fas fa-cogs"></i> Kubernetes</li>
-                    </ul>
-                </li>
-            </ul>
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-cogs mr-2"></i>Technical Skills</h2>
+                <ul class="list-none space-y-4 text-gray-700">
+                    <li><strong>Languages:</strong>
+                        <ul class="list-none space-y-2 ml-4">
+                            <li><span class="icon-fallback"><i class="fas fa-code"></i>Java 8</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-code"></i>Core Java</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-bug"></i>Java Errors</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cube"></i>Data Structures</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-list"></i>Collections</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cloud-upload-alt"></i>REST API</span></li>
+                            <li><span class="icon-fallback"><i class="fab fa-html5"></i><span class="fallback-text">HTML</span> HTML</span></li>
+                            <li><span class="icon-fallback"><i class="fab fa-css3-alt"></i><span class="fallback-text">CSS</span> CSS</span></li>
+                        </ul>
+                    </li>
+                    <li><strong>Frameworks:</strong>
+                        <ul class="list-none space-y-2 ml-4">
+                            <li><span class="icon-fallback"><i class="fas fa-cogs"></i>Spring Boot</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cogs"></i>Spring MVC</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cogs"></i>Spring Data JPA</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cogs"></i>Hibernate</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-shield-alt"></i>Spring Security (JWT)</span></li>
+                        </ul>
+                    </li>
+                    <li><strong>Databases:</strong>
+                        <ul class="list-none space-y-2 ml-4">
+                            <li><span class="icon-fallback"><i class="fas fa-database"></i>MySQL</span></li>
+                        </ul>
+                    </li>
+                    <li><strong>Tools:</strong>
+                        <ul class="list-none space-y-2 ml-4">
+                            <li><span class="icon-fallback"><i class="fas fa-tools"></i>Eclipse</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-tools"></i>IntelliJ</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-tools"></i>STS</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-code"></i>VS Code</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-terminal"></i>Git Bash</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-code-branch"></i>Git</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-tools"></i>Maven</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-ticket-alt"></i>Jira</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cloud-upload-alt"></i>Postman</span></li>
+                        </ul>
+                    </li>
+                    <li><strong>Platforms:</strong>
+                        <ul class="list-none space-y-2 ml-4">
+                            <li><span class="icon-fallback"><i class="fas fa-server"></i>Apache Tomcat</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cloud"></i>AWS</span></li>
+                            <li><span class="icon-fallback"><i class="fab fa-github"></i><span class="fallback-text">GitHub</span> GitHub</span></li>
+                            <li><span class="icon-fallback"><i class="fab fa-docker"></i><span class="fallback-text">Docker</span> Docker</span></li>
+                            <li><span class="icon-fallback"><i class="fas fa-cogs"></i>Kubernetes</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
 
-            <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-            <ul>
-                <li>Java Full Stack Developer Course – IBM</li>
-                <li>AI Tools – ChatGPT</li>
-                <li>MSCIT – Government Certified</li>
-                <li>Member – Drishya Talent Assemble</li>
-            </ul>
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="section-title text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-2 mb-4"><i class="fas fa-certificate mr-2"></i>Certifications</h2>
+                <ul class="list-none space-y-2 text-gray-700">
+                    <li>Java Full Stack Developer Course – IBM</li>
+                    <li>AI Tools – ChatGPT</li>
+                    <li>MSCIT – Government Certified</li>
+                    <li>Member – Drishya Talent Assemble</li>
+                </ul>
+            </section>
         </div>
     </div>
 </body>
